@@ -1,0 +1,81 @@
+package tp2_listes;
+
+public class RecursiveLinkedList {
+    Node head;
+
+    public RecursiveLinkedList() {
+        this.head = null;
+    }
+
+    public void append(int data) {
+        head = appendRecursively(head, data);
+    }
+
+    private Node appendRecursively(Node current, int data) {
+        if (current == null) {
+            return new Node(data);
+        }
+        current.next = appendRecursively(current.next, data);
+        return current;
+    }
+
+    public void printList() {
+        printRecursively(head);
+        System.out.println("null");
+    }
+
+    private void printRecursively(Node current) {
+        if (current == null) {
+            return;
+        }
+        System.out.print(current.data + " -> ");
+        printRecursively(current.next);
+    }
+
+    public int get(int position) {
+        return getRecursively(head, position, 0);
+    }
+
+    private int getRecursively(Node current, int position, int index) {
+        if (current == null) {
+            throw new IndexOutOfBoundsException("Position non valide !");
+        }
+        if (index == position) {
+            return current.data;
+        }
+        return getRecursively(current.next, position, index + 1);
+    }
+
+    public void update(int position, int newData) {
+        updateRecursively(head, position, newData, 0);
+    }
+
+    private void updateRecursively(Node current, int position, int newData, int index) {
+        if (current == null) {
+            System.out.println("Position non valide !");
+            return;
+        }
+        if (index == position) {
+            current.data = newData;
+            return;
+        }
+        updateRecursively(current.next, position, newData, index + 1);
+    }
+
+    public void delete(int position) {
+        head = deleteRecursively(head, position, 0);
+    }
+
+    private Node deleteRecursively(Node current, int position, int index) {
+        if (current == null) {
+            System.out.println("Position non valide !");
+            return null;
+        }
+        if (index == position) {
+            return current.next;
+        }
+        current.next = deleteRecursively(current.next, position, index + 1);
+        return current;
+    }
+
+}
