@@ -1,0 +1,39 @@
+public class Main {
+    public static void main(String[] args) {
+        // Tester la liste récursive
+        System.out.println("Test de la liste récursive :");
+        RecursiveLinkedList recursiveList = new RecursiveLinkedList();
+        recursiveList.append(10);
+        recursiveList.append(20);
+        recursiveList.append(30);
+        recursiveList.append(40);
+        
+        System.out.println("Liste récursive avant modification :");
+        recursiveList.printList();
+        
+        System.out.println("Récupérer l'élément à la position 2 : " + recursiveList.get(2));
+
+        System.out.println("Mise à jour de la position 1 à 25 :");
+        recursiveList.update(1, 25);
+        recursiveList.printList();
+
+        System.out.println("Suppression de l'élément à la position 3 :");
+        recursiveList.delete(3);
+        recursiveList.printList();
+
+        // Tester la liste non récursive avec inversion
+        System.out.println("\nTest de la liste non récursive :");
+        NonRecursiveLinkedList nonRecursiveList = new NonRecursiveLinkedList();
+        nonRecursiveList.append(50);
+        nonRecursiveList.append(60);
+        nonRecursiveList.append(70);
+        nonRecursiveList.append(80);
+
+        System.out.println("Liste non récursive avant inversion :");
+        nonRecursiveList.printList();
+
+        System.out.println("Inversion de la liste non récursive :");
+        nonRecursiveList.reverse();
+        nonRecursiveList.printList();
+    }
+}
